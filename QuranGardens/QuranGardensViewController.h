@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QuranGardensViewController : UIViewController
-
-
+@interface QuranGardensViewController : UICollectionViewController <UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @end

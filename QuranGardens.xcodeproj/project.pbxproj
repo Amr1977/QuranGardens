@@ -15,9 +15,11 @@
 		076965BD1C5B5D0700ED2D33 /* QuranGardensTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 076965BC1C5B5D0700ED2D33 /* QuranGardensTests.m */; };
 		076965C81C5B5D0800ED2D33 /* QuranGardensUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 076965C71C5B5D0800ED2D33 /* QuranGardensUITests.m */; };
 		076965D81C5B60C600ED2D33 /* Sura.m in Sources */ = {isa = PBXBuildFile; fileRef = 076965D71C5B60C600ED2D33 /* Sura.m */; };
-		076965DB1C5B628200ED2D33 /* SuraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 076965DA1C5B628200ED2D33 /* SuraView.m */; };
+		076965DB1C5B628200ED2D33 /* SuraViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 076965DA1C5B628200ED2D33 /* SuraViewCell.m */; };
 		076965E01C5B630E00ED2D33 /* QuranGardensViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 076965DF1C5B630E00ED2D33 /* QuranGardensViewController.m */; };
-		076965E21C5B6A7A00ED2D33 /* SuraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 076965E11C5B6A7A00ED2D33 /* SuraView.xib */; };
+		076965E21C5B6A7A00ED2D33 /* SuraViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 076965E11C5B6A7A00ED2D33 /* SuraViewCell.xib */; };
+		07FC8BF41C5D05C000695E0A /* PeriodicTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FC8BF31C5D05C000695E0A /* PeriodicTaskManager.m */; };
+		07FC8BF71C5D05DC00695E0A /* PeriodicTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FC8BF61C5D05DC00695E0A /* PeriodicTask.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,11 +56,15 @@
 		076965C91C5B5D0800ED2D33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		076965D61C5B60C600ED2D33 /* Sura.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sura.h; sourceTree = "<group>"; };
 		076965D71C5B60C600ED2D33 /* Sura.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sura.m; sourceTree = "<group>"; };
-		076965D91C5B628200ED2D33 /* SuraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuraView.h; sourceTree = "<group>"; };
-		076965DA1C5B628200ED2D33 /* SuraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuraView.m; sourceTree = "<group>"; };
+		076965D91C5B628200ED2D33 /* SuraViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuraViewCell.h; sourceTree = "<group>"; };
+		076965DA1C5B628200ED2D33 /* SuraViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuraViewCell.m; sourceTree = "<group>"; };
 		076965DE1C5B630E00ED2D33 /* QuranGardensViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuranGardensViewController.h; sourceTree = "<group>"; };
 		076965DF1C5B630E00ED2D33 /* QuranGardensViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuranGardensViewController.m; sourceTree = "<group>"; };
-		076965E11C5B6A7A00ED2D33 /* SuraView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuraView.xib; sourceTree = "<group>"; };
+		076965E11C5B6A7A00ED2D33 /* SuraViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuraViewCell.xib; sourceTree = "<group>"; };
+		07FC8BF21C5D05C000695E0A /* PeriodicTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeriodicTaskManager.h; sourceTree = "<group>"; };
+		07FC8BF31C5D05C000695E0A /* PeriodicTaskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeriodicTaskManager.m; sourceTree = "<group>"; };
+		07FC8BF51C5D05DC00695E0A /* PeriodicTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeriodicTask.h; sourceTree = "<group>"; };
+		07FC8BF61C5D05DC00695E0A /* PeriodicTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeriodicTask.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +118,7 @@
 				076965A51C5B5D0700ED2D33 /* AppDelegate.h */,
 				076965A61C5B5D0700ED2D33 /* AppDelegate.m */,
 				076965AB1C5B5D0700ED2D33 /* Main.storyboard */,
-				076965E11C5B6A7A00ED2D33 /* SuraView.xib */,
+				076965E11C5B6A7A00ED2D33 /* SuraViewCell.xib */,
 				076965DD1C5B62AE00ED2D33 /* Controller */,
 				076965DC1C5B628F00ED2D33 /* View */,
 				076965D51C5B609100ED2D33 /* Model */,
@@ -155,6 +161,10 @@
 			children = (
 				076965D61C5B60C600ED2D33 /* Sura.h */,
 				076965D71C5B60C600ED2D33 /* Sura.m */,
+				07FC8BF51C5D05DC00695E0A /* PeriodicTask.h */,
+				07FC8BF61C5D05DC00695E0A /* PeriodicTask.m */,
+				07FC8BF21C5D05C000695E0A /* PeriodicTaskManager.h */,
+				07FC8BF31C5D05C000695E0A /* PeriodicTaskManager.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -162,8 +172,8 @@
 		076965DC1C5B628F00ED2D33 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				076965D91C5B628200ED2D33 /* SuraView.h */,
-				076965DA1C5B628200ED2D33 /* SuraView.m */,
+				076965D91C5B628200ED2D33 /* SuraViewCell.h */,
+				076965DA1C5B628200ED2D33 /* SuraViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -283,7 +293,7 @@
 				076965B21C5B5D0700ED2D33 /* LaunchScreen.storyboard in Resources */,
 				076965AF1C5B5D0700ED2D33 /* Assets.xcassets in Resources */,
 				076965AD1C5B5D0700ED2D33 /* Main.storyboard in Resources */,
-				076965E21C5B6A7A00ED2D33 /* SuraView.xib in Resources */,
+				076965E21C5B6A7A00ED2D33 /* SuraViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,9 +318,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				076965DB1C5B628200ED2D33 /* SuraView.m in Sources */,
+				076965DB1C5B628200ED2D33 /* SuraViewCell.m in Sources */,
+				07FC8BF41C5D05C000695E0A /* PeriodicTaskManager.m in Sources */,
 				076965E01C5B630E00ED2D33 /* QuranGardensViewController.m in Sources */,
 				076965D81C5B60C600ED2D33 /* Sura.m in Sources */,
+				07FC8BF71C5D05DC00695E0A /* PeriodicTask.m in Sources */,
 				076965A71C5B5D0700ED2D33 /* AppDelegate.m in Sources */,
 				076965A41C5B5D0700ED2D33 /* main.m in Sources */,
 			);
@@ -538,6 +550,7 @@
 				076965CE1C5B5D0800ED2D33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		076965CF1C5B5D0800ED2D33 /* Build configuration list for PBXNativeTarget "QuranGardensTests" */ = {
 			isa = XCConfigurationList;
@@ -546,6 +559,7 @@
 				076965D11C5B5D0800ED2D33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		076965D21C5B5D0800ED2D33 /* Build configuration list for PBXNativeTarget "QuranGardensUITests" */ = {
 			isa = XCConfigurationList;
@@ -554,6 +568,7 @@
 				076965D41C5B5D0800ED2D33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

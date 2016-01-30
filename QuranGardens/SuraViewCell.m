@@ -1,13 +1,17 @@
 //
-//  SuraView.h
+//  SuraView.m
 //  QuranGardens
 //
 //  Created by Amr Lotfy on 1/29/16.
 //  Copyright © 2016 Amr Lotfy. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "SuraViewCell.h"
 
-@interface SuraView : UICollectionViewCell
+@interface SuraViewCell ()
+
+@end
+
+@implementation SuraViewCell
 
 @end

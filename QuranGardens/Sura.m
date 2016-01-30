@@ -10,4 +10,10 @@
 
 @implementation Sura
 
+- (NSInteger)remainingTimeForNextReview{
+    //TODO: Do it !
+    return arc4random_uniform(ReviewCyclePeriodInHours);
+}
+
+
 @end

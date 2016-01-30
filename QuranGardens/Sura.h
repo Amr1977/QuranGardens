@@ -7,11 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PeriodicTask.h"
 
-@interface Sura : NSObject
+/** Hours period between due reviews. */
+NSInteger const ReviewCyclePeriodInHours = 240;
 
-@property (strong,nonatomic) NSString *name;
-@property (strong,nonatomic) NSDate *lastActionDate;
+@interface Sura : PeriodicTask
+
+/** Sura order in mushaf. */
 @property (nonatomic) NSInteger order;
+
+/** Calculates remaining hours */
+- (NSInteger)remainingTimeForNextReview;
 
 @end

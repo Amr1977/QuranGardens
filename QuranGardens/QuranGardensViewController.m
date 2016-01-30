@@ -7,11 +7,12 @@
 //
 
 #import "QuranGardensViewController.h"
-#import "SuraView.h"
+#import "SuraViewCell.h"
+#import "Sura.h"
 
 @interface QuranGardensViewController ()
 
-
+@property (strong, nonatomic) NSArray <Sura *> *suras;
 
 @end
 
@@ -23,7 +24,6 @@
 {
     [super viewDidLoad];
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    //[self.collectionView setContentInset:UIEdgeInsetsMake(200, 100, 100, 100)];
     
     UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc] init];
     self.collectionView=[[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
@@ -32,16 +32,22 @@
     
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cellIdentifier"];
     [self.collectionView setBackgroundColor:[UIColor blackColor]];
-    
-   // [self.view addSubview:_collectionView];
-    
-    
-    // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)setupSuras{
+    if (!_suras) {
+        NSMutableArray <Sura *>* mutableSuras = @[].mutableCopy;
+        for (NSInteger i = 1; i<=114; i++) {
+            Sura *sura = [[Sura alloc] init];
+            mutableSuras addObject:<#(nonnull Sura *)#>
+        }
+        self.suras =
+    }
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 114;
+    return self.suras.count;
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
@@ -50,6 +56,9 @@
     UICollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"cellIdentifier" forIndexPath:indexPath];
     
     cell.backgroundColor=[UIColor colorWithWhite:255/255 alpha:0.5];
+    
+    //TODO: fix later
+    cell.alpha = [self.suras[indexPath.row] remainingTimeForNextReview] / ReviewCyclePeriodInHours;
     return cell;
 }
 

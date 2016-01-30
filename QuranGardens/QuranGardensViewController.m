@@ -68,10 +68,9 @@
     PeriodicTask *task = [self.periodicTaskManager getTaskAtIndex:indexPath.row];
     cell.alpha = [task remainingTimeInterval] / task.cycleInterval;
     NSLog(@"last occurence Date: %@ alpha: %f",[task lastOccurrence],cell.alpha);
-    UILabel *label = [[UILabel alloc] init];
-    label.text = [NSString stringWithFormat: @"%@", task.name];
     
-    [cell addSubview:label];
+    cell.suraName.text = @"test";
+    cell.suraName.backgroundColor = [UIColor whiteColor];
 
     return cell;
 }
@@ -79,6 +78,12 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return CGSizeMake(100, 100);
+}
+
+- (void)collectionView:(UICollectionView *)collectionView  didSelectItemAtIndexPath:(nonnull NSIndexPath *)indexPath{
+    PeriodicTask *task = [self.periodicTaskManager getTaskAtIndex:indexPath.row];
+    task.lastOccurrence = [[NSDate alloc] init];
+    [self.collectionView reloadData];
 }
 
 @end

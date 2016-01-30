@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SuraView : UIView
+@interface SuraView : UICollectionViewCell
 
 @end

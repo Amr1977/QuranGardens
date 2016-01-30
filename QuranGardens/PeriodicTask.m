@@ -10,7 +10,11 @@
 
 @implementation PeriodicTask
 
-- (instancetype)initWithName:(NSString *)name description:(NSString *)description interval:(NSTimeInterval)interval lastOccurrence:(NSDate *)lastOccurrence{
+- (instancetype)initWithName:(NSString *)name
+                 description:(NSString *)description
+               cycleInterval:(NSTimeInterval)interval
+              lastOccurrence:(NSDate *)lastOccurrence{
+    
     self = [super init];
     if (self) {
         _name = name;
@@ -18,15 +22,28 @@
         _cycleInterval = interval;
         _lastOccurrence = lastOccurrence;
     }
+    
     return self;
 }
 
 - (NSTimeInterval)remainingTimeInterval{
     NSTimeInterval result = 0;
-    NSTimeInterval timeFromLastOccurrenceToNow = [self.lastOccurrence timeIntervalSinceNow];
-    result = self.cycleInterval - timeFromLastOccurrenceToNow;
-    
+    NSTimeInterval ellapsedInterval = [[[NSDate alloc] init] timeIntervalSinceDate:self.lastOccurrence];
+    result = self.cycleInterval - ellapsedInterval;
     return result;
+}
+
+- (instancetype)createPeridicTaskWithName:(NSString *)name
+                              description:(NSString *)description
+                            cycleInterval:(NSTimeInterval)interval
+                           lastOccurrence:(NSDate *)lastOccurrence{
+    
+    PeriodicTask *newTask = [[PeriodicTask alloc] initWithName:name
+                                                   description:description
+                                                 cycleInterval:interval
+                                                lastOccurrence:lastOccurrence];
+    
+    return newTask;
 }
 
 @end

@@ -8,6 +8,10 @@
 
 #import "Sura.h"
 
+/** Hours period between due reviews. */
+static NSInteger const ReviewCyclePeriodInHours = 240;
+
+
 @implementation Sura
 
 - (NSInteger)remainingTimeForNextReview{

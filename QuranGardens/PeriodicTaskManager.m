@@ -8,6 +8,55 @@
 
 #import "PeriodicTaskManager.h"
 
+@interface PeriodicTaskManager ()
+
+@property (strong, nonatomic) NSMutableArray<PeriodicTask *> *tasks;
+
+@end
+
 @implementation PeriodicTaskManager
+
+- (void)addPeriodicTask:(PeriodicTask *)task{
+    [self.tasks addObject:task];
+}
+
+- (BOOL)removeTaskByName:(nonnull NSString *)name{
+    NSInteger indexToRemove = -1;
+    for (NSInteger index = 0; index < [self.tasks count]; index++) {
+        if ([self.tasks[index].name isEqualToString:name]) {
+            indexToRemove = index;
+            break;
+        }
+    }
+    if (indexToRemove > -1) {
+        [self.tasks removeObjectAtIndex:indexToRemove];
+    }
+    
+    return (indexToRemove != -1);
+}
+
+- (NSArray *)tasks{
+    if (!_tasks) {
+        _tasks = @[].mutableCopy;
+    }
+    return _tasks;
+}
+
+- (void)loadTasks{
+    
+}
+
+- (void)saveTasks{
+
+}
+
+- (NSInteger)taskCount{
+    NSLog(@"Tasks count: %u",[self.tasks count]);
+    return [self.tasks count];
+}
+
+- (PeriodicTask * _Nullable)getTaskAtIndex:(NSInteger)index{
+    return [self.tasks objectAtIndex:index];
+}
 
 @end

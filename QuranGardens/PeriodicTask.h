@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-
 /** 
  A task that should occurre at least once within a preset time period, this time period is the maximum allowed time between two occurrences of a periodic task.
  
  */
 @interface PeriodicTask : NSObject
+
 /** Task name */
 @property (strong, nonatomic) NSString *name;
 
@@ -29,5 +29,15 @@
 /** Calculates time interval remaining to reach maximum allowed time period between two task occurrences*/
 - (NSTimeInterval)remainingTimeInterval;
 
+
+- (instancetype)initWithName:(NSString *)name
+                 description:(NSString *)description
+               cycleInterval:(NSTimeInterval)interval
+              lastOccurrence:(NSDate *)lastOccurrence;
+
+- (instancetype)createPeridicTaskWithName:(NSString *)name
+                              description:(NSString *)description
+                            cycleInterval:(NSTimeInterval)interval
+                           lastOccurrence:(NSDate *)lastOccurrence;
 
 @end

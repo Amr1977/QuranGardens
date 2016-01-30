@@ -9,9 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "PeriodicTask.h"
 
-/** Hours period between due reviews. */
-NSInteger const ReviewCyclePeriodInHours = 240;
-
 @interface Sura : PeriodicTask
 
 /** Sura order in mushaf. */

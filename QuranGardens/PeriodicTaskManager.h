@@ -7,7 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PeriodicTask.h"
 
 @interface PeriodicTaskManager : NSObject
+
+- (void)addPeriodicTask:(nonnull PeriodicTask *)task;
+- (BOOL)removeTaskByName:(nonnull NSString *)name;
+- (PeriodicTask * _Nullable)getTaskAtIndex:(NSInteger)index;
+
+- (void)loadTasks;
+- (void)saveTasks;
+- (NSInteger)taskCount;
 
 @end

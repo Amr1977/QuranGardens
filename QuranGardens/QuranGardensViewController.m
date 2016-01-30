@@ -9,10 +9,11 @@
 #import "QuranGardensViewController.h"
 #import "SuraViewCell.h"
 #import "Sura.h"
+#import "PeriodicTaskManager.h"
 
 @interface QuranGardensViewController ()
 
-@property (strong, nonatomic) NSArray <Sura *> *suras;
+@property (strong, nonatomic) PeriodicTaskManager *periodicTaskManager;
 
 @end
 
@@ -23,6 +24,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.periodicTaskManager = [PeriodicTaskManager new];
+    [self setupSuras];
+    [self setupCollectionView];
+}
+
+- (void)setupCollectionView{
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc] init];
@@ -30,35 +37,42 @@
     [self.collectionView setDataSource:self];
     [self.collectionView setDelegate:self];
     
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cellIdentifier"];
+    [self.collectionView registerClass:[SuraViewCell class] forCellWithReuseIdentifier:@"cellIdentifier"];
     [self.collectionView setBackgroundColor:[UIColor blackColor]];
 }
 
 - (void)setupSuras{
-    if (!_suras) {
-        NSMutableArray <Sura *>* mutableSuras = @[].mutableCopy;
-        for (NSInteger i = 1; i<=114; i++) {
-            Sura *sura = [[Sura alloc] init];
-            mutableSuras addObject:<#(nonnull Sura *)#>
-        }
-        self.suras =
+    NSInteger intervalintenDays = 10*24*60*60;
+    for (NSInteger i = 1; i <= 114; i++) {
+        PeriodicTask *sura = [[PeriodicTask alloc] init];
+        sura.name = [NSString stringWithFormat:@"%u",i];
+        sura.cycleInterval = intervalintenDays;
+        NSTimeInterval randomIntervalWithintenDays = arc4random_uniform(intervalintenDays);
+        sura.lastOccurrence = [NSDate dateWithTimeIntervalSinceNow:(-1 * randomIntervalWithintenDays)];
+        [self.periodicTaskManager addPeriodicTask:sura];
     }
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.suras.count;
+    return [self.periodicTaskManager taskCount];
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"cellIdentifier" forIndexPath:indexPath];
-    
-    cell.backgroundColor=[UIColor colorWithWhite:255/255 alpha:0.5];
+    SuraViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"cellIdentifier" forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor greenColor];
     
     //TODO: fix later
-    cell.alpha = [self.suras[indexPath.row] remainingTimeForNextReview] / ReviewCyclePeriodInHours;
+    PeriodicTask *task = [self.periodicTaskManager getTaskAtIndex:indexPath.row];
+    cell.alpha = [task remainingTimeInterval] / task.cycleInterval;
+    NSLog(@"last occurence Date: %@ alpha: %f",[task lastOccurrence],cell.alpha);
+    UILabel *label = [[UILabel alloc] init];
+    label.text = [NSString stringWithFormat: @"%@", task.name];
+    
+    [cell addSubview:label];
+
     return cell;
 }
 

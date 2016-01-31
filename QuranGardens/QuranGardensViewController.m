@@ -37,7 +37,10 @@
     [self.collectionView setDataSource:self];
     [self.collectionView setDelegate:self];
     
-    [self.collectionView registerClass:[SuraViewCell class] forCellWithReuseIdentifier:@"cellIdentifier"];
+    UINib *nib = [UINib nibWithNibName:@"SuraViewCell" bundle: nil];
+    [self.collectionView registerNib:nib forCellWithReuseIdentifier:@"cellIdentifier"];
+    
+    //[self.collectionView registerClass:[SuraViewCell class] forCellWithReuseIdentifier:@"cellIdentifier"];
     [self.collectionView setBackgroundColor:[UIColor blackColor]];
 }
 
@@ -61,6 +64,8 @@
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    
     SuraViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"cellIdentifier" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor greenColor];
     
@@ -69,9 +74,9 @@
     cell.alpha = [task remainingTimeInterval] / task.cycleInterval;
     NSLog(@"last occurence Date: %@ alpha: %f",[task lastOccurrence],cell.alpha);
     
-    cell.suraName.text = @"test";
-    cell.suraName.backgroundColor = [UIColor whiteColor];
-
+    cell.timeProgressView.progress = 0.5f;
+    cell.suraName.text = [NSString stringWithFormat:@"Sura: %@", task.name];
+    
     return cell;
 }
 
@@ -82,6 +87,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView  didSelectItemAtIndexPath:(nonnull NSIndexPath *)indexPath{
     PeriodicTask *task = [self.periodicTaskManager getTaskAtIndex:indexPath.row];
+    NSLog(@"Selected task: name: %@, remainingTimeinterval: %f, cycle: %f",task.name, [task remainingTimeInterval], task.cycleInterval);
     task.lastOccurrence = [[NSDate alloc] init];
     [self.collectionView reloadData];
 }

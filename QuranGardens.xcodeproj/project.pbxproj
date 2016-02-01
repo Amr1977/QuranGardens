@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		072133FD1C5E92C9004EFCCB /* DataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 072133FC1C5E92C9004EFCCB /* DataLoader.m */; };
 		076965A41C5B5D0700ED2D33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 076965A31C5B5D0700ED2D33 /* main.m */; };
 		076965A71C5B5D0700ED2D33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 076965A61C5B5D0700ED2D33 /* AppDelegate.m */; };
 		076965AD1C5B5D0700ED2D33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 076965AB1C5B5D0700ED2D33 /* Main.storyboard */; };
@@ -40,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		072133FB1C5E92C9004EFCCB /* DataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataLoader.h; sourceTree = "<group>"; };
+		072133FC1C5E92C9004EFCCB /* DataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataLoader.m; sourceTree = "<group>"; };
 		0769659F1C5B5D0700ED2D33 /* QuranGardens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuranGardens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		076965A31C5B5D0700ED2D33 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		076965A51C5B5D0700ED2D33 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -165,6 +168,8 @@
 				07FC8BF61C5D05DC00695E0A /* PeriodicTask.m */,
 				07FC8BF21C5D05C000695E0A /* PeriodicTaskManager.h */,
 				07FC8BF31C5D05C000695E0A /* PeriodicTaskManager.m */,
+				072133FB1C5E92C9004EFCCB /* DataLoader.h */,
+				072133FC1C5E92C9004EFCCB /* DataLoader.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -318,6 +323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				072133FD1C5E92C9004EFCCB /* DataLoader.m in Sources */,
 				076965DB1C5B628200ED2D33 /* SuraViewCell.m in Sources */,
 				07FC8BF41C5D05C000695E0A /* PeriodicTaskManager.m in Sources */,
 				076965E01C5B630E00ED2D33 /* QuranGardensViewController.m in Sources */,

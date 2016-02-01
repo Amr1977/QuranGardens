@@ -76,9 +76,8 @@
     //TODO: fix later
     PeriodicTask *task = [self.periodicTaskManager getTaskAtIndex:indexPath.row];
     cell.alpha = [task remainingTimeInterval] / task.cycleInterval;
-    NSLog(@"last occurence Date: %@ alpha: %f",[task lastOccurrence],cell.alpha);
     
-    cell.timeProgressView.progress = 0.5f;
+    cell.timeProgressView.progress = cell.alpha;
     cell.suraName.text = [NSString stringWithFormat:@"Sura: %@", task.name];
     
     return cell;
@@ -86,13 +85,12 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(100, 100);
+    return CGSizeMake(150, 150);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView  didSelectItemAtIndexPath:(nonnull NSIndexPath *)indexPath{
     PeriodicTask *task = [self.periodicTaskManager getTaskAtIndex:indexPath.row];
-    NSLog(@"Selected task: name: %@, remainingTimeinterval: %f, cycle: %f",task.name, [task remainingTimeInterval], task.cycleInterval);
-    
+   
     RLMRealm *realm = [RLMRealm defaultRealm];
     [realm beginWriteTransaction];
     task.lastOccurrence = [[NSDate alloc] init];

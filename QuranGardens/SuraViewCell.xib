@@ -14,7 +14,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="177" height="162"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <progressView contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fQa-4x-aMd">
+                    <progressView contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fQa-4x-aMd">
                         <rect key="frame" x="13" y="131" width="150" height="3"/>
                         <color key="backgroundColor" red="0.0054648042929292817" green="0.0054648042929292817" blue="0.0054648042929292817" alpha="1" colorSpace="calibratedRGB"/>
                     </progressView>
@@ -27,6 +27,11 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="fQa-4x-aMd" secondAttribute="trailing" constant="14" id="ENL-Yt-tNF"/>
+                <constraint firstItem="fQa-4x-aMd" firstAttribute="leading" secondItem="3fq-Gd-ssG" secondAttribute="leading" constant="13" id="PjZ-1a-SBG"/>
+                <constraint firstAttribute="bottom" secondItem="fQa-4x-aMd" secondAttribute="bottom" constant="29" id="oIi-rt-qdL"/>
+            </constraints>
             <size key="customSize" width="177" height="162"/>
             <connections>
                 <outlet property="suraName" destination="Auy-mw-Mdj" id="RHz-0O-wTi"/>

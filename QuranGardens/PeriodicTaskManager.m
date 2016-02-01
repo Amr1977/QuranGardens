@@ -16,6 +16,17 @@
 
 @implementation PeriodicTaskManager
 
+- (void)resetTasks{
+    NSDate *oldDay = [NSDate dateWithTimeIntervalSince1970:0];
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+    for (PeriodicTask * task in self.tasks) {
+        task.lastOccurrence = oldDay;
+    }
+    [realm commitWriteTransaction];
+    [self saveTasks];
+}
+
 - (void)addPeriodicTask:(PeriodicTask *)task{
     [self.tasks addObject:task];
 }

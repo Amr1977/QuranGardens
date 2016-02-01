@@ -30,6 +30,13 @@
         [self setupSuras];
     }
     [self setupCollectionView];
+    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Reset" style:UIBarButtonItemStylePlain target:self action:@selector(resetTasks)];
+    self.navigationItem.rightBarButtonItem = anotherButton;
+}
+
+- (void)resetTasks{
+    [self.periodicTaskManager resetTasks];
+    [self.collectionView reloadData];
 }
 
 - (void)setupCollectionView{
@@ -47,13 +54,14 @@
     [self.collectionView setBackgroundColor:[UIColor blackColor]];
 }
 
+NSInteger const intervalInTenDays = 10*24*60*60;
+
 - (void)setupSuras{
-    NSInteger intervalintenDays = 10*24*60*60;
     for (NSInteger i = 1; i <= 114; i++) {
         PeriodicTask *sura = [[PeriodicTask alloc] init];
         sura.name = [NSString stringWithFormat:@"%ld",(long)i];
-        sura.cycleInterval = intervalintenDays;
-        NSTimeInterval randomIntervalWithintenDays = arc4random_uniform(intervalintenDays);
+        sura.cycleInterval = intervalInTenDays;
+        NSTimeInterval randomIntervalWithintenDays = arc4random_uniform(intervalInTenDays);
         sura.lastOccurrence = [NSDate dateWithTimeIntervalSinceNow:(-1 * randomIntervalWithintenDays)];
         [self.periodicTaskManager addPeriodicTask:sura];
     }

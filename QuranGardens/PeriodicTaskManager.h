@@ -17,6 +17,7 @@
 
 - (void)loadTasks;
 - (void)saveTasks;
+- (void)resetTasks;
 - (NSInteger)taskCount;
 
 @end

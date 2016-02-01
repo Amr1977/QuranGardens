@@ -18,10 +18,16 @@
                         <rect key="frame" x="13" y="131" width="150" height="3"/>
                         <color key="backgroundColor" red="0.0054648042929292817" green="0.0054648042929292817" blue="0.0054648042929292817" alpha="1" colorSpace="calibratedRGB"/>
                     </progressView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Auy-mw-Mdj" userLabel="sura name">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Auy-mw-Mdj" userLabel="sura name">
                         <rect key="frame" x="8" y="8" width="161" height="41"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <attributedString key="attributedText">
+                            <fragment content="Label">
+                                <attributes>
+                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="19" name="HelveticaNeue-Bold"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -29,6 +35,8 @@
             </view>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="fQa-4x-aMd" secondAttribute="trailing" constant="14" id="ENL-Yt-tNF"/>
+                <constraint firstItem="Auy-mw-Mdj" firstAttribute="leading" secondItem="3fq-Gd-ssG" secondAttribute="leading" constant="8" id="EoP-uA-DXL"/>
+                <constraint firstItem="Auy-mw-Mdj" firstAttribute="top" secondItem="3fq-Gd-ssG" secondAttribute="top" constant="8" id="F69-wV-7bE"/>
                 <constraint firstItem="fQa-4x-aMd" firstAttribute="leading" secondItem="3fq-Gd-ssG" secondAttribute="leading" constant="13" id="PjZ-1a-SBG"/>
                 <constraint firstAttribute="bottom" secondItem="fQa-4x-aMd" secondAttribute="bottom" constant="29" id="oIi-rt-qdL"/>
             </constraints>

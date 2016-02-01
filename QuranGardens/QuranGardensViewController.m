@@ -75,7 +75,7 @@
     
     //TODO: fix later
     PeriodicTask *task = [self.periodicTaskManager getTaskAtIndex:indexPath.row];
-    cell.alpha = [task remainingTimeInterval] / task.cycleInterval;
+    cell.alpha = MAX([task remainingTimeInterval] / task.cycleInterval, 0.1);
     
     cell.timeProgressView.progress = cell.alpha;
     cell.suraName.text = [NSString stringWithFormat:@"Sura: %@", task.name];
@@ -85,7 +85,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(150, 150);
+    return CGSizeMake(100, 100);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView  didSelectItemAtIndexPath:(nonnull NSIndexPath *)indexPath{

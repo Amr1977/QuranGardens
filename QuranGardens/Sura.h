@@ -16,5 +16,6 @@
 
 /** Calculates remaining hours */
 - (NSInteger)remainingTimeForNextReview;
++ (NSArray<NSString *> *)suraNames;
 
 @end

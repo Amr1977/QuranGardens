@@ -19,22 +19,20 @@
 
 @implementation QuranGardensViewController
 
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.periodicTaskManager = [PeriodicTaskManager new];
     [self.periodicTaskManager loadTasks];
     if (![self.periodicTaskManager taskCount]) {
-        [self setupSuras];
+        [self initSuras];
     }
     [self setupCollectionView];
-    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Reset" style:UIBarButtonItemStylePlain target:self action:@selector(resetTasks)];
+    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Reset" style:UIBarButtonItemStylePlain target:self action:@selector(resetAllTasks)];
     self.navigationItem.rightBarButtonItem = anotherButton;
 }
 
-- (void)resetTasks{
+- (void)resetAllTasks{
     [self.periodicTaskManager resetTasks];
     [self.collectionView reloadData];
 }
@@ -50,21 +48,35 @@
     UINib *nib = [UINib nibWithNibName:@"SuraViewCell" bundle: nil];
     [self.collectionView registerNib:nib forCellWithReuseIdentifier:@"cellIdentifier"];
     
-    //[self.collectionView registerClass:[SuraViewCell class] forCellWithReuseIdentifier:@"cellIdentifier"];
     [self.collectionView setBackgroundColor:[UIColor blackColor]];
 }
 
 NSInteger const intervalInTenDays = 10*24*60*60;
-
-- (void)setupSuras{
+//TODO: create suras in a method and randomize content in another method
+- (void)initSuras{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+    [realm deleteAllObjects];
     for (NSInteger i = 1; i <= 114; i++) {
         PeriodicTask *sura = [[PeriodicTask alloc] init];
-        sura.name = [NSString stringWithFormat:@"%ld",(long)i];
+        sura.name = [Sura suraNames][i-1];
         sura.cycleInterval = intervalInTenDays;
-        NSTimeInterval randomIntervalWithintenDays = arc4random_uniform(intervalInTenDays);
-        sura.lastOccurrence = [NSDate dateWithTimeIntervalSinceNow:(-1 * randomIntervalWithintenDays)];
+        sura.lastOccurrence = [NSDate dateWithTimeIntervalSince1970:0];
         [self.periodicTaskManager addPeriodicTask:sura];
     }
+    [realm commitWriteTransaction];
+    [self.periodicTaskManager saveTasks];
+}
+
+- (void)randomizeSuralastOccurrence{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+    for (NSInteger i = 0; i <= 113; i++) {
+        PeriodicTask *sura = [self.periodicTaskManager getTaskAtIndex:i];
+        NSTimeInterval randomIntervalWithintenDays = arc4random_uniform(intervalInTenDays);
+        sura.lastOccurrence = [NSDate dateWithTimeIntervalSinceNow:(-1 * randomIntervalWithintenDays)];
+    }
+    [realm commitWriteTransaction];
     [self.periodicTaskManager saveTasks];
 }
 
@@ -73,27 +85,23 @@ NSInteger const intervalInTenDays = 10*24*60*60;
     return [self.periodicTaskManager taskCount];
 }
 
-// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
     SuraViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"cellIdentifier" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor greenColor];
     
-    //TODO: fix later
     PeriodicTask *task = [self.periodicTaskManager getTaskAtIndex:indexPath.row];
-    cell.alpha = MAX([task remainingTimeInterval] / task.cycleInterval, 0.1);
+    cell.alpha = MAX([task remainingTimeInterval] / task.cycleInterval, 0.2);
     
     cell.timeProgressView.progress = cell.alpha;
-    cell.suraName.text = [NSString stringWithFormat:@"Sura: %@", task.name];
-    
+    cell.suraName.text = [NSString stringWithFormat:@"%u %@", indexPath.row + 1, task.name];
+    cell.suraName.adjustsFontSizeToFitWidth = YES;
     return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(100, 100);
+    return CGSizeMake(170, 100);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView  didSelectItemAtIndexPath:(nonnull NSIndexPath *)indexPath{

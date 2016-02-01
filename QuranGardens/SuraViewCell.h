@@ -11,7 +11,6 @@
 @interface SuraViewCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *suraName;
-
 //amount of time left for next due review time
 @property (weak, nonatomic) IBOutlet UIProgressView *timeProgressView;
 

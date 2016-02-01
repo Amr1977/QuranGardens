@@ -24,7 +24,6 @@
         task.lastOccurrence = oldDay;
     }
     [realm commitWriteTransaction];
-    [self saveTasks];
 }
 
 - (void)addPeriodicTask:(PeriodicTask *)task{

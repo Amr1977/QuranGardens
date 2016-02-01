@@ -46,4 +46,11 @@
     return newTask;
 }
 
+- (void)save{
+    RLMRealm * realm = [RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+    [realm addObject:self];
+    [realm commitWriteTransaction];
+}
+
 @end

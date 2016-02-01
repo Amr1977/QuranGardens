@@ -43,15 +43,24 @@
 }
 
 - (void)loadTasks{
-    
+    RLMResults <PeriodicTask *> *results = [PeriodicTask allObjects];
+    for (PeriodicTask * task in results) {
+        [self.tasks addObject:task];
+    }
 }
 
 - (void)saveTasks{
-
+    RLMRealm * realm = [RLMRealm defaultRealm];
+    [realm transactionWithBlock:^{
+        for (PeriodicTask *task in self.tasks) {
+            [realm addObject:task]; ;
+        }
+    }];
+    
 }
 
 - (NSInteger)taskCount{
-    NSLog(@"Tasks count: %u",[self.tasks count]);
+    NSLog(@"Tasks count: %lu",(unsigned long)[self.tasks count]);
     return [self.tasks count];
 }
 

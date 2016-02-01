@@ -25,7 +25,10 @@
 {
     [super viewDidLoad];
     self.periodicTaskManager = [PeriodicTaskManager new];
-    [self setupSuras];
+    [self.periodicTaskManager loadTasks];
+    if (![self.periodicTaskManager taskCount]) {
+        [self setupSuras];
+    }
     [self setupCollectionView];
 }
 
@@ -48,12 +51,13 @@
     NSInteger intervalintenDays = 10*24*60*60;
     for (NSInteger i = 1; i <= 114; i++) {
         PeriodicTask *sura = [[PeriodicTask alloc] init];
-        sura.name = [NSString stringWithFormat:@"%u",i];
+        sura.name = [NSString stringWithFormat:@"%ld",(long)i];
         sura.cycleInterval = intervalintenDays;
         NSTimeInterval randomIntervalWithintenDays = arc4random_uniform(intervalintenDays);
         sura.lastOccurrence = [NSDate dateWithTimeIntervalSinceNow:(-1 * randomIntervalWithintenDays)];
         [self.periodicTaskManager addPeriodicTask:sura];
     }
+    [self.periodicTaskManager saveTasks];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -88,8 +92,17 @@
 - (void)collectionView:(UICollectionView *)collectionView  didSelectItemAtIndexPath:(nonnull NSIndexPath *)indexPath{
     PeriodicTask *task = [self.periodicTaskManager getTaskAtIndex:indexPath.row];
     NSLog(@"Selected task: name: %@, remainingTimeinterval: %f, cycle: %f",task.name, [task remainingTimeInterval], task.cycleInterval);
+    
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
     task.lastOccurrence = [[NSDate alloc] init];
+    [realm commitWriteTransaction];
+    
     [self.collectionView reloadData];
+}
+
+- (void)dealloc{
+    [self.periodicTaskManager saveTasks];
 }
 
 @end

@@ -71,7 +71,6 @@
 }
 
 - (NSInteger)taskCount{
-    NSLog(@"Tasks count: %lu",(unsigned long)[self.tasks count]);
     return [self.tasks count];
 }
 

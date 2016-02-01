@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		071D38971C5FAFFE0063D80E /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071D38961C5FAFFE0063D80E /* AssetsLibrary.framework */; };
+		071D38991C5FB00E0063D80E /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071D38981C5FB00E0063D80E /* CoreText.framework */; };
+		071D389B1C5FB01D0063D80E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071D389A1C5FB01D0063D80E /* SystemConfiguration.framework */; };
+		071D389D1C5FB0250063D80E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071D389C1C5FB0250063D80E /* CoreTelephony.framework */; };
+		071D389F1C5FB0420063D80E /* BuddyBuildSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071D389E1C5FB0420063D80E /* BuddyBuildSDK.framework */; };
 		072133FD1C5E92C9004EFCCB /* DataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 072133FC1C5E92C9004EFCCB /* DataLoader.m */; };
 		076965A41C5B5D0700ED2D33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 076965A31C5B5D0700ED2D33 /* main.m */; };
 		076965A71C5B5D0700ED2D33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 076965A61C5B5D0700ED2D33 /* AppDelegate.m */; };
@@ -42,6 +47,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		071D38961C5FAFFE0063D80E /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		071D38981C5FB00E0063D80E /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		071D389A1C5FB01D0063D80E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		071D389C1C5FB0250063D80E /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		071D389E1C5FB0420063D80E /* BuddyBuildSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BuddyBuildSDK.framework; sourceTree = "<group>"; };
 		072133FB1C5E92C9004EFCCB /* DataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataLoader.h; sourceTree = "<group>"; };
 		072133FC1C5E92C9004EFCCB /* DataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataLoader.m; sourceTree = "<group>"; };
 		0769659F1C5B5D0700ED2D33 /* QuranGardens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuranGardens.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +89,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				071D389F1C5FB0420063D80E /* BuddyBuildSDK.framework in Frameworks */,
+				071D389D1C5FB0250063D80E /* CoreTelephony.framework in Frameworks */,
+				071D389B1C5FB01D0063D80E /* SystemConfiguration.framework in Frameworks */,
+				071D38991C5FB00E0063D80E /* CoreText.framework in Frameworks */,
+				071D38971C5FAFFE0063D80E /* AssetsLibrary.framework in Frameworks */,
 				B09B2F22E36C698BDB4E128A /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,6 +226,11 @@
 		E5D1290A52CBC62F69226967 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				071D389E1C5FB0420063D80E /* BuddyBuildSDK.framework */,
+				071D389C1C5FB0250063D80E /* CoreTelephony.framework */,
+				071D389A1C5FB01D0063D80E /* SystemConfiguration.framework */,
+				071D38981C5FB00E0063D80E /* CoreText.framework */,
+				071D38961C5FAFFE0063D80E /* AssetsLibrary.framework */,
 				0F6F86663B27387B6390C993 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -547,6 +567,10 @@
 			baseConfigurationReference = 4471AB38FECC5544ED3AE85D /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = QuranGardens/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.evaluation.QuranGardens;
@@ -559,6 +583,10 @@
 			baseConfigurationReference = 8D4AEBCFFED3D4B58B1BED97 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = QuranGardens/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.evaluation.QuranGardens;
